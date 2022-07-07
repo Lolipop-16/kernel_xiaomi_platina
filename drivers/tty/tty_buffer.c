@@ -574,8 +574,7 @@ int tty_insert_flip_string_and_push_buffer(struct tty_port *port,
 	if (size)
 		tty_flip_buffer_commit(buf->tail);
 	spin_unlock_irqrestore(&port->lock, flags);
-
-	queue_work(system_unbound_wq, &buf->work);
+	queue_kthread_work(&port->worker, &buf->work);
 
 	return size;
 }
