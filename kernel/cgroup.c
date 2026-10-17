@@ -6816,9 +6816,6 @@ debug_css_alloc(struct cgroup_subsys_state *parent_css)
 	return css;
 }
 
-		if ((cft->flags & CFTYPE_PRESSURE) && !cgroup_psi_enabled())
-			continue;
-
 static void debug_css_free(struct cgroup_subsys_state *css)
 {
 	kfree(css);
